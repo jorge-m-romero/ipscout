@@ -1,0 +1,8 @@
+# Sample input: one IP per line, '#' starts a comment
+8.8.8.8          # Google Public DNS
+1.1.1.1          # Cloudflare DNS
+9.9.9.9          # Quad9
+2001:4860:4860::8888
+192.168.1.10     # private, skipped for external lookups
+8.8.8.8          # duplicate, ignored
+not-an-ip        # reported as a warning
