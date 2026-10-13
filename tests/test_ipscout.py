@@ -111,6 +111,15 @@ class SecurityTests(unittest.TestCase):
 
         self.assertIn("error", ipscout.with_retry(boom))
 
+    def test_api_key_with_control_characters_rejected(self):
+        with mock.patch.dict(os.environ, {"VT_API_KEY": "abc\ndef"}), \
+             mock.patch.object(ipscout, "http_get_json") as http, \
+             mock.patch.object(sys, "stdin", io.StringIO("8.8.8.8\n")):
+            with self.assertRaises(SystemExit) as cm:
+                ipscout.main(["-", "--vt"])
+        http.assert_not_called()
+        self.assertNotIn("abc", str(cm.exception))
+
     def test_rate_limited_error_has_no_url(self):
         self.assertEqual(str(ipscout.RateLimited()), "")
 

@@ -280,6 +280,9 @@ def main(argv=None):
     vt_key = os.environ.get("VT_API_KEY", "").strip()
     if args.vt and not vt_key:
         sys.exit("--vt needs a VirusTotal API key in the VT_API_KEY environment variable.")
+    if args.vt and (not vt_key.isprintable() or any(ch.isspace() for ch in vt_key)):
+        # http.client would echo the bad value (the key) in its error message
+        sys.exit("VT_API_KEY contains spaces or control characters; check how it was set.")
     ipinfo_token = os.environ.get("IPINFO_TOKEN", "").strip() or None
 
     try:
