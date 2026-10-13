@@ -32,6 +32,7 @@ class ParsingTests(unittest.TestCase):
         self.assertEqual(ipscout.vt_verdict({"malicious": 2, "suspicious": 1}), "MALICIOUS")
         self.assertEqual(ipscout.vt_verdict({"malicious": 0, "suspicious": 1}), "SUSPICIOUS")
         self.assertEqual(ipscout.vt_verdict({"malicious": 0, "harmless": 60}), "clean")
+        self.assertEqual(ipscout.vt_verdict({"harmless": 0, "undetected": 92}), "unrated")
         self.assertEqual(ipscout.vt_verdict({}), "")
 
 

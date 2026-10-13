@@ -140,6 +140,8 @@ def vt_verdict(stats):
         return "MALICIOUS"
     if stats.get("suspicious", 0) > 0:
         return "SUSPICIOUS"
+    if stats.get("harmless", 0) == 0:
+        return "unrated"  # every engine said "undetected": no opinion, not a clean bill
     return "clean"
 
 

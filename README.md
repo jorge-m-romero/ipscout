@@ -71,7 +71,8 @@ Keys are read from environment variables only, so they don't end up in your shel
 `vt_verdict` is one of:
 - `MALICIOUS`: at least one engine flags the IP as malicious
 - `SUSPICIOUS`: no malicious flags, but at least one suspicious flag
-- `clean`
+- `clean`: no malicious or suspicious flags, and at least one engine rates it harmless
+- `unrated`: every engine returned "undetected", so none has an opinion. Treat this as unknown, not safe.
 - `not found`: VirusTotal has no record of the IP
 
 The exit code is `1` if any lookup failed, so the script can be used in pipelines.
