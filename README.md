@@ -8,7 +8,7 @@ Quick triage for a list of IP addresses. For each IP, `ipscout` finds:
 
 It's useful when you've pulled IPs out of firewall logs, flow logs, an alert or a phishing email and want a quick idea of who they belong to and whether they're known to be bad.
 
-Python 3.10+, standard library only. Nothing to `pip install`.
+Python 3.11+, standard library only. Nothing to `pip install`.
 
 ## Usage
 
@@ -88,7 +88,7 @@ The exit code is `1` if any lookup failed, so the script can be used in pipeline
 python -m unittest discover -s tests -v
 ```
 
-The tests mock all network calls, so they run offline. GitHub Actions runs them on Python 3.10, 3.12 and 3.14.
+The tests mock all network calls, so they run offline. GitHub Actions runs them on Python 3.11, 3.12 and 3.14.
 
 ## Roadmap ideas
 
